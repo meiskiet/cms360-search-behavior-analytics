@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-CMS360 is an end-to-end Customer 360 analytics project designed to analyze **search behavior changes across time**.  
+This is an end-to-end Customer 360 analytics project designed to analyze **search behavior changes across time**.  
 The system processes search logs from two different months, identifies each user’s most searched content, classifies content into business categories, and compares category shifts between months.
 
 The project demonstrates a **realistic data engineering + analytics architecture**, including batch processing, dimensional modeling, web application serving, and BI reporting.
@@ -30,8 +30,6 @@ This project is intentionally scoped for portfolio demonstration:
 - Content classified into **one business category**
 - Final output at **user level** for analytics and visualization
 
-The focus is on **clarity, correctness, and explainability**, rather than over-engineering.
-
 ---
 
 ## 4. Tech Stack
@@ -47,13 +45,13 @@ The focus is on **clarity, correctness, and explainability**, rather than over-e
 - **Vercel** – deployment
 
 ### Analytics & BI
-- **Power BI Desktop / Service** – dashboards and reporting
+- **Power BI Service** – dashboards and reporting
 
 ---
 
 ## 5. High-Level Architecture
 
-![CMS360 Architecture Diagram](assets/cms360-architecture.png)
+![CMS360 Architecture Diagram](assets/cms360.png)
 
 ### Architecture Explanation
 
@@ -94,6 +92,48 @@ Output:
 - Union distinct content from June and July
 - Apply exact rule-based mapping first
 - Unresolved content is classified using a local LLM (Ollama)
-- Final dimension table:
+- Final dimension table: `dim_content`
+  - content
+  - canonical_content
+  - category
+  
+---
 
-``
+### 6.4 Customer 360 Comparison
+- Join content dimension back to monthly results
+- Compute:
+  - `category_t6`
+  - `category_t7`
+  - `change_type` (Same/Changed)
+  - `group_label`
+- Final table: `customer_360_final`
+
+---
+
+## 7. Web Application
+
+### Live Demo
+![Web App Demo](assets/demo.png)
+
+### Features
+- KPI cards (total users, changed users, change rate)
+- Filtes by category, froup, change type
+- Category transition charts
+- User-level drill-down view
+
+---
+
+## 8. BI Dashboard
+
+![BI Dashboard](assets/bi.png)
+
+### Key Metrics:
+- Total Users
+- Change Rate (%)
+- Changed vs Same users
+- Category transition maatrix
+
+---
+
+## 9. Project Structure
+
