@@ -133,7 +133,4 @@ Output:
 - Changed vs Same users
 - Category transition maatrix
 
----
-
-## 9. Project Structure
 
