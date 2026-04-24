@@ -49,7 +49,7 @@ This project is intentionally scoped for portfolio demonstration:
 
 ---
 
-## 5. High-Level Architecture
+## 5. Architecture
 
 ![CMS360 Architecture Diagram](assets/cms360.png)
 
